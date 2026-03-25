@@ -8,7 +8,8 @@ const banks = [
   'Kuda',
   'Moniepoint',
   'UBA',
-  'Zenith Bank'
+  'Zenith Bank',
+  'Opay'
 ];
 
 export default function PaymentForm({ value, onChange, onSubmit, isSubmitting }) {
