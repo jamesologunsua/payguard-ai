@@ -1,5 +1,10 @@
-import { post } from '../../shared/lib/http';
-
 export function pay(payload) {
-  return post('/api/risk/pay', payload);
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({
+        status: 'success',
+        reference: `PG-${Date.now()}`
+      })
+    }, 1200)
+  })
 }

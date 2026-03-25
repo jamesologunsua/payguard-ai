@@ -42,7 +42,7 @@ if (network?.isLinked) score += 15;
     pattern,
     trend,
     network,
-    similarity,
+    similarity,                                                                                                                                           
     message:
       level === "HIGH"
         ? "High risk account"

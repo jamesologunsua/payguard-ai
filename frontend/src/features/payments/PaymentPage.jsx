@@ -29,6 +29,18 @@ export default function PaymentPage() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  const bankCodeMap = {
+    'Access Bank': '044',
+    'Fidelity Bank': '070',
+    'First Bank': '011',
+    'GTBank': '058',
+    'Kuda': '50211',
+    'Moniepoint': '50515',
+    'UBA': '033',
+    'Zenith Bank': '057',
+    'Opay': '999',
+  };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -40,7 +52,12 @@ export default function PaymentPage() {
     setChecking(true);
 
     try {
-      const data = await checkRisk(form);
+      const payload = {
+        account_number: form.account_number,
+        amount: Number(form.amount),
+        bank_code: bankCodeMap[form.bank] || ''
+      }
+      const data = await checkRisk(payload)
       setRisk(data);
       setPopupOpen(true);
     } catch (err) {
@@ -85,6 +102,7 @@ export default function PaymentPage() {
     }).toString();
     navigate(`/report?${params}`);
   };
+
 
   return (
     <div className="page">

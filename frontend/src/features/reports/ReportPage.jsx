@@ -16,7 +16,8 @@ export default function ReportPage() {
       account_number: searchParams.get('account_number') || '',
       bank_name: searchParams.get('bank') || '',
       scam_type: scamTypes[0],
-      description: ''
+      description: '',
+      amount: ''
     }),
     [searchParams]
   );
@@ -38,7 +39,15 @@ export default function ReportPage() {
     setSuccess('');
 
     try {
-      await submitReport(form);
+      const payload = {
+        account_number: form.account_number,
+        bank_name: form.bank_name,
+        scam_type: form.scam_type,
+        description: form.description,
+        amount: form.amount ? Number(form.amount) : undefined
+      };
+
+      await submitReport(payload);
       setSuccess('Report submitted. Thanks for helping protect other users.');
       setForm((prev) => ({ ...prev, description: '' }));
     } catch (err) {
@@ -93,6 +102,18 @@ export default function ReportPage() {
               name="bank_name"
               className="input"
               value={form.bank_name}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="field">
+            <label htmlFor="amount">Amount (optional)</label>
+            <input
+              id="amount"
+              name="amount"
+              className="input"
+              inputMode="decimal"
+              value={form.amount}
               onChange={handleChange}
             />
           </div>
