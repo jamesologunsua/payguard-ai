@@ -1,0 +1,25 @@
+{
+  "defaultEnv": { "ENV": "NODE_ENV" },
+  "development": {
+    "driver": "pg",
+    "user": { "ENV": "DB_USER" },
+    "host": { "ENV": "DB_HOST" },
+    "database": { "ENV": "DB_NAME" },
+    "port": { "ENV": "DB_PORT" }
+  },
+  "test": {
+    "driver": "pg",
+    "user": { "ENV": "DB_USER" },
+    "host": { "ENV": "DB_HOST" },
+    "database": { "ENV": "DB_NAME" },
+    "port": { "ENV": "DB_PORT" }
+  },
+  "production": {
+    "driver": "pg",
+    "user": { "ENV": "DB_USER" },
+    "host": { "ENV": "DB_HOST" },
+    "database": { "ENV": "DB_NAME" },
+    "port": { "ENV": "DB_PORT" }
+  },
+  "sql-file": true
+} 
